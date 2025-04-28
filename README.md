@@ -11,7 +11,16 @@ Vite (which means "fast" in French) is a front-end build tool and development se
 
 This template provides a minimal setup to get TMA working in Vite with React, TypeScript, HMR and some ESLint rules.
 
-## Usage
+
+
+## 🚀 Deploy
+
+### Deploy to GitHub Pages
+
+Workflow is set up to deploy to GitHub Pages when a push is made to the `main` branch.
+`/.github/workflows/static.yml`
+
+### Run locally
 
 ```bash
 # npm
@@ -23,6 +32,31 @@ npm run dev --host
 yarn
 yarn dev --host
 ```
+
+### Docker
+
+Configuration for running multiple applications in one network on a single server
+
+Initial setup (performed once)
+
+```bash
+# Create a common network for all containers
+docker network create tma_network
+# Create .env file for the first application
+cat > .env << EOF
+APP_NAME=app1
+APP_PORT=3001
+EOF
+```
+
+Run container
+
+```bash
+docker-compose up -d
+```
+
+Nginx Proxy configuration on a separate server
+
 
 # Links
 - [Doc](https://docs.ton.org/develop/dapps/twa)
